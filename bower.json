@@ -1,0 +1,20 @@
+{
+  "name": "numbered",
+  "version": "1.0",
+  "description": "numbered lines for any container",
+  "dependencies": {
+     "jquery": "latest",
+     "bootstrap": "latest"
+   },
+  "authors": [
+    "Asti Pili"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
