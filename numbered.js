@@ -6,9 +6,10 @@ function numberify (selector) {
         line_height =  parseFloat(getLineHeight(el));
         
         var rows = Math.floor(height/line_height);
-        console.debug("rows",rows);
+        //console.debug("rows",rows);
         return rows;
     }
+    
     getRows('#test');
 
     function getLineHeight(element){
