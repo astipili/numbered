@@ -3,8 +3,6 @@ function numberify (selector) {
     function getRows(selector) {
         var height = $(selector).height();
         var el = document.getElementById("test");
-        //var line_height = $(selector).css('line-height');
-        //line_height = line_height;
         line_height =  parseFloat(getLineHeight(el));
         
         var rows = Math.floor(height/line_height);
