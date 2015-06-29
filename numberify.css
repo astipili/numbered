@@ -1,0 +1,17 @@
+#n_numbers{
+    float: left; 
+    //width: 25px; 
+    text-align: right; 
+    color : #999; 
+    padding-right: 5px;
+    background: #eee; 
+    margin-right: 5px;
+    line-height: 18px;
+    font-size: 12px;
+}
+
+#numbered{
+    margin-left: 35px;
+    border: 1px solid #ccc;
+    height: 300px;
+}

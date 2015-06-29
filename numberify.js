@@ -2,6 +2,14 @@ var id;
 
 function numberify (selector) {
 
+	$(selector).parent().prepend('<div id="n_numbers"></div>');
+
+	var newDiv = $(selector).text();
+
+	$(selector).text('').html("<div id='mynew'>" + newDiv + "</div>")
+
+	console.log("prepend");
+
 	//function to get actual line numbers not the css property value
 	function getLineHeight(element){
 	   var temp = document.createElement(element.nodeName);
@@ -14,6 +22,7 @@ function numberify (selector) {
 	}
     
     function getRows(selector) {
+    	console.log("getRows");
         var height = $(selector).height();
         console.debug("height", height);
         var el = document.getElementById("numbered");
@@ -24,12 +33,25 @@ function numberify (selector) {
         return rows;
     }
 
+    function addNumbers(selector){
+    	var count = getRows('#mynew');
+
+    	$('#n_numbers').html('').width(25).height($(selector).height());
+
+    	for (var i = 1; i <= count ; i++) {
+    		$('#n_numbers').append('<div>' + i + '</div>');
+    	};
+    	
+    }
+
     $(window).resize(function() {
         clearTimeout(id);
         
-        id = setTimeout(getRows(selector), 500);
+        id = setTimeout(addNumbers(selector), 500);
+
+        console.log("here");
         
     });
 
-    getRows(selector);
+    addNumbers(selector);
 }
