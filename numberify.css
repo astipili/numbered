@@ -11,7 +11,15 @@
 }
 
 #numbered{
-    margin-left: 35px;
-    border: 1px solid #ccc;
     height: 300px;
+    overflow: scroll;
+}
+ 
+#mynew {
+    padding-left: 35px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }
