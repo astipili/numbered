@@ -9,11 +9,11 @@ function numberify (selector) {
 		lineHeight: 1
 	}
 
-	var newDiv = $(selector).html();
+	var content = $(selector).html();
 
-	$(selector).text('').html("<div id='mynew'>" + newDiv + "</div>")
+	$(selector).text('').html("<div id='numberify_wrapper'>" + content + "</div>")
 
-	$('#mynew').parent().prepend('<div id="n_numbers"></div>');
+	$('#numberify_wrapper').parent().prepend('<div id="n_numbers"></div>');
 
 	//function to get actual line numbers not the css property value
 	function getRealLineHeight(element){
@@ -40,7 +40,7 @@ function numberify (selector) {
     }
 
     function addNumbers(selector){
-    	var count = getRows('#mynew');
+    	var count = getRows('#numberify_wrapper');
 
     	$('#n_numbers').html('').css({
     		"width": style.width,
@@ -59,8 +59,6 @@ function numberify (selector) {
         clearTimeout(id);
         
         id = setTimeout(addNumbers(selector), 500);
-
-        console.log("here");
         
     });
 
