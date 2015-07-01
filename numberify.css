@@ -1,18 +1,11 @@
 #n_numbers{
     float: left; 
-    //width: 25px; 
     text-align: right; 
-    color : #999; 
+    color : #bbb; 
     padding-right: 5px;
-    background: #eee; 
-    margin-right: 5px;
-    line-height: 18px;
+    background: #f9f9f9; 
     font-size: 12px;
-}
-
-#numbered{
-    height: 300px;
-    overflow: scroll;
+    text-shadow: 0 -1px 0 #fff;
 }
  
 #mynew {
