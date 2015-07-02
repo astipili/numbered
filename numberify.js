@@ -29,6 +29,14 @@ function numberify (selector) {
     function getRows(selector) {
     	console.log("getRows");
         var height = $(selector).height();
+        
+        var margin_top = $(selector).css("padding-top");
+        var margin_bottom = $(selector).css("padding-bottom");
+
+        var margin_top = $(selector).css("padding-top");
+        var margin_bottom = $(selector).css("padding-bottom");
+        
+
         console.debug("height", height);
         var el = document.getElementById("numbered");
         line_height =  parseFloat(getRealLineHeight(el));
