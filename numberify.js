@@ -29,9 +29,14 @@ function numberify (selector) {
     function getRows(selector) {
     	console.log("getRows");
         var height = $(selector).height();
-        
+        console.log("inner el padding", $(selector + ' p').css("padding-top"));
+        console.log("inner el margin", $(selector + ' p').css("margin-top"));
+
+        console.log($(selector).has('p').length);
+
         var margin_top = $(selector).css("padding-top");
         var margin_bottom = $(selector).css("padding-bottom");
+
 
         var margin_top = $(selector).css("padding-top");
         var margin_bottom = $(selector).css("padding-bottom");
