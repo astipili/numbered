@@ -28,19 +28,25 @@ function numberify (selector) {
     
     function getRows(selector) {
     	console.log("getRows");
-        var height = $(selector).height();
-        console.log("inner el padding", $(selector + ' p').css("padding-top"));
-        console.log("inner el margin", $(selector + ' p').css("margin-top"));
 
-        console.log($(selector).has('p').length);
+        if($(selector).has('p').length > 0){
+        	var count = $(selector + ' p').length;
 
-        var margin_top = $(selector).css("padding-top");
-        var margin_bottom = $(selector).css("padding-bottom");
+        	/*var marginTop =  $(selector + ' p').css("margin-top");
+        	var marginBottom = $(selector + ' p').css("margin-bottom");
+        	var paddingTop = $(selector + ' p').css("padding-top");
+        	var paddingBottom = $(selector + ' p').css("padding-bottom");*/
 
+        	var elemetsHeight =  $(selector + ' p').css("margin-top");
+        	elemetsHeight += $(selector + ' p').css("margin-bottom");
+        	elemetsHeight += $(selector + ' p').css("padding-top");
+         	elemetsHeight += $(selector + ' p').css("padding-bottom");
 
-        var margin_top = $(selector).css("padding-top");
-        var margin_bottom = $(selector).css("padding-bottom");
-        
+         	elemetsHeight = elemetsHeight * count;
+
+        }
+
+        var height = $(selector).height() + elemetsHeight;
 
         console.debug("height", height);
         var el = document.getElementById("numbered");
