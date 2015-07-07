@@ -7,7 +7,9 @@ function numberify (selector) {
 		marginRight: '5px',
 		paddingRight: '5px',
 		lineHeight: 1
-	}
+	};
+
+	var allowedInnerTags = ["p", "div"];
 
 	var content = $(selector).html();
 
@@ -16,42 +18,46 @@ function numberify (selector) {
 	$('#numberify_wrapper').parent().prepend('<div id="n_numbers"></div>');
 
 	//function to get actual line numbers not the css property value
-	function getRealLineHeight(element){
-	   var temp = document.createElement(element.nodeName);
-	   temp.setAttribute("style","margin:0px;padding:0px;font-family:"+element.style.fontFamily+";font-size:"+element.style.fontSize);
-	   temp.innerHTML = "test";
-	   temp = element.parentNode.appendChild(temp);
-	   var ret = temp.clientHeight;
-	   temp.parentNode.removeChild(temp);
-	   return ret;
+	function getRealLineHeight (selector) {
+		selector = selector.substr(1, selector.length);
+		var element = document.getElementById(selector);
+		var temp = document.createElement(element.nodeName);
+		temp.setAttribute("style","margin:0px;padding:0px;font-family:"+element.style.fontFamily+";font-size:"+element.style.fontSize);
+		temp.innerHTML = "test";
+		temp = element.parentNode.appendChild(temp);
+		var ret = temp.clientHeight;
+		temp.parentNode.removeChild(temp);
+		return ret;
+	}
+
+	function marginStabilizer (tag) {
+
+		if($(selector).has(tag).length > 0){
+
+			$(selector + ' ' + tag).not("#n_numbers").css({
+				paddingTop: 0,
+				paddingBottom: 0,
+				marginTop:  line_height,
+				marginBottom: line_height
+			});
+		}
+		else {
+			return;
+		}
 	}
     
-    function getRows(selector) {
-    	console.log("getRows");
+    function getRows (selector) {
 
-        if($(selector).has('p').length > 0){
-        	var count = $(selector + ' p').length;
-
-        	/*var marginTop =  $(selector + ' p').css("margin-top");
-        	var marginBottom = $(selector + ' p').css("margin-bottom");
-        	var paddingTop = $(selector + ' p').css("padding-top");
-        	var paddingBottom = $(selector + ' p').css("padding-bottom");*/
-
-        	var elemetsHeight =  $(selector + ' p').css("margin-top");
-        	elemetsHeight += $(selector + ' p').css("margin-bottom");
-        	elemetsHeight += $(selector + ' p').css("padding-top");
-         	elemetsHeight += $(selector + ' p').css("padding-bottom");
-
-         	elemetsHeight = elemetsHeight * count;
-
-        }
-
-        var height = $(selector).height() + elemetsHeight;
-
-        console.debug("height", height);
-        var el = document.getElementById("numbered");
-        line_height =  parseFloat(getRealLineHeight(el));
+        line_height =  parseFloat(getRealLineHeight(selector));
+        
         style.lineHeight = line_height;
+
+        $.each(allowedInnerTags, function(index) {
+        	marginStabilizer ( allowedInnerTags[index] );
+        });
+
+        var height = $(selector).height();
+
         console.debug("line_height",line_height);
         var rows = Math.floor(height/line_height);
         console.debug("rows",rows);
