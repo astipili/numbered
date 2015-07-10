@@ -1,8 +1,15 @@
-(function() {
+( function($) {
 
     var id;
 
-    return numberify = function(selector) {
+    $.fn.numberify = function(options) {
+
+    	var settings = $.extend({
+           // These are the defaults.
+           color: "#556b2f",
+           backgroundColor: "white"
+       	}, options );
+
 
         var wrapperId = 'numberify_wrapper',
             lineNumbersId = 'n_numbers',
@@ -15,9 +22,9 @@
             },
             content = '';
 
-        content = $(selector).html();
+        content = $(this).html();
 
-        $(selector).text('').html("<div id=" + wrapperId + ">" + content + "</div>")
+        $(this).text('').html("<div id=" + wrapperId + ">" + content + "</div>")
 
         style.lineHeight = getRealLineHeight('#' + wrapperId);
 
@@ -76,7 +83,7 @@
             return rows;
         }
 
-        function addNumbers(selector) {
+        function addNumbers() {
             var count = getRows('#' + wrapperId);
 
             $('#' + lineNumbersId).html('');
@@ -87,13 +94,14 @@
 
         }
 
-        $(window).resize(function() {
+        //making sure that event fires just once
+        $(window).resize(function() {   
             clearTimeout(id);
-
-            id = setTimeout(addNumbers(selector), 500);
-
+            id = setTimeout(addNumbers(), 500);
         });
 
-        addNumbers(selector);
+        addNumbers();
+
+        return this;
     }
-})();
+}(jQuery));
