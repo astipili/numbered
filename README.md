@@ -8,5 +8,8 @@
 
 # how to use
 
-<p> to initiate plagin simple write <p>
-$(#slector).numberify
+<p> to initiate plagin simply write <p>
+```
+$(#slector).numberify;
+
+```
