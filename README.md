@@ -13,3 +13,4 @@
 $(#slector).numberify;
 
 ```
+you can have `<p>, <div>, <pre>`, etc formating tags in your container that is going to be numberified.
